@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Activity, AlertTriangle, CarFront, CheckCircle2, CircleDollarSign, Gauge, History, LoaderCircle, Search, ShieldCheck, Wrench } from 'lucide-react';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const API_BASE_URL = 'https://ai-used-car-assistant.onrender.com';
+
 const initialForm = {
   brand: 'Volkswagen', model: 'Jetta', year: 2015, mileage: 80000,
   fuelType: 'Diesel', transmission: 'Manual', owners: 1, askingPrice: 500000,
