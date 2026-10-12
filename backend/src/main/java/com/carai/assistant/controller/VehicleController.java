@@ -1,6 +1,4 @@
-
 package com.carai.assistant.controller;
-
 import com.carai.assistant.dto.VehicleRequest;
 import com.carai.assistant.entity.VehicleAnalysis;
 import com.carai.assistant.service.VehicleService;
@@ -8,7 +6,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 
