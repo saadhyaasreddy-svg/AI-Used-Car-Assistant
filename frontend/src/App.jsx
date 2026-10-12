@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Activity, AlertTriangle, CarFront, CheckCircle2, CircleDollarSign, Gauge, History, LoaderCircle, Search, ShieldCheck, Wrench } from 'lucide-react';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const initialForm = {
   brand: 'Volkswagen', model: 'Jetta', year: 2015, mileage: 80000,
   fuelType: 'Diesel', transmission: 'Manual', owners: 1, askingPrice: 500000,
@@ -26,7 +26,7 @@ export default function App() {
 
   async function loadHistory() {
     try {
-      const response = await fetch('/api/vehicles');
+      const response = await fetch(`${API_BASE_URL}/api/vehicles`);
       if (!response.ok) throw new Error('Could not load saved analyses.');
       setHistory(await response.json());
     } catch { setHistory([]); }
@@ -39,11 +39,16 @@ export default function App() {
   }
   async function analyze(event) {
     event.preventDefault(); setLoading(true); setError(''); setReport(null);
-    try {
-      const response = await fetch('/api/vehicles/analyze', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form)
-      });
-      const data = await response.json();
+    
+try {
+  const response = await fetch(`${API_BASE_URL}/api/vehicles/analyze`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(form)
+  });
+
+  const data = await response.json();
+
       if (!response.ok) throw new Error(data.message || 'Analysis failed. Check the backend and form values.');
       setReport(data); setActiveTab('analyze'); await loadHistory();
     } catch (e) {
