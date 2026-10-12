@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin(origins = "https://ai-used-car-assistant-e846.vercel.app")
 @RestController
 @RequestMapping("/api/vehicles")
+public class VehicleController {
 public class VehicleController {
     private static final Logger log = LoggerFactory.getLogger(VehicleController.class);
     private final VehicleService service;
